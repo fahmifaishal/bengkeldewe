@@ -10,7 +10,7 @@
     
     <!-- Login Screen -->
     <string name="app_name_banner">Bengkel Dewe</string>
-    <string name="app_subtitle">Sistem Booking Servis Motor Modern</string>
+    <string name="app_subtitle">Ngerti Dewe Kualitasee....</string>
     <string name="label_email">Email</string>
     <string name="placeholder_email">Contoh: user@bengkel.com</string>
     <string name="label_password">Password</string>
