@@ -1,3 +1,67 @@
 <resources>
-    <string name="app_name">bengkeldewe</string>
+    <string name="app_name">Bengkel Dewe</string>
+    
+    <!-- General / Navigation -->
+    <string name="desc_back">Kembali</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_choose">Pilih</string>
+    <string name="btn_retry">Coba Lagi</string>
+    <string name="msg_error_prefix">Error: </string>
+    
+    <!-- Login Screen -->
+    <string name="app_name_banner">Bengkel Dewe</string>
+    <string name="app_subtitle">Sistem Booking Servis Motor Modern</string>
+    <string name="label_email">Email</string>
+    <string name="placeholder_email">Contoh: user@bengkel.com</string>
+    <string name="label_password">Password</string>
+    <string name="placeholder_password">Masukkan password Anda</string>
+    <string name="desc_hide_password">Sembunyikan password</string>
+    <string name="desc_show_password">Tampilkan password</string>
+    <string name="btn_login">Masuk</string>
+    
+    <!-- Home Screen -->
+    <string name="title_home">Bengkel Dewe - List Booking</string>
+    <string name="desc_profile">Profil Pengguna</string>
+    <string name="fab_add_booking">+</string>
+    <string name="msg_no_bookings">Belum ada data booking</string>
+    <string name="dialog_delete_title">Konfirmasi Hapus</string>
+    <string name="dialog_delete_message">Apakah Anda yakin ingin menghapus booking servis ini?</string>
+    <string name="dialog_yes">Ya</string>
+    <string name="dialog_cancel">Batal</string>
+    
+    <!-- Booking Item -->
+    <string name="desc_edit">Edit</string>
+    <string name="desc_delete">Delete</string>
+    
+    <!-- Add Booking Screen -->
+    <string name="title_add_booking">Tambah Booking Servis</string>
+    <string name="desc_motor_photo">Foto Motor</string>
+    <string name="desc_select_photo">Pilih Foto</string>
+    <string name="placeholder_select_photo">Pilih Foto Motor dari Galeri</string>
+    <string name="label_motor_name">Nama Motor</string>
+    <string name="placeholder_motor_name">Contoh: Honda Vario 150</string>
+    <string name="label_complaint">Keluhan / Masalah Motor</string>
+    <string name="placeholder_complaint">Contoh: Ganti oli, cvt berisik, rem kurang pakem</string>
+    <string name="label_booking_date">Tanggal Booking</string>
+    <string name="placeholder_booking_date">Pilih tanggal servis</string>
+    <string name="desc_select_date">Pilih Tanggal</string>
+    <string name="btn_save_booking">Simpan Booking</string>
+    
+    <!-- Edit Booking Screen -->
+    <string name="title_edit_booking">Edit Booking Servis</string>
+    <string name="desc_new_motor_photo">Foto Baru Motor</string>
+    <string name="placeholder_select_photo_edit">Pilih Foto Motor Baru</string>
+    <string name="btn_save_changes">Simpan Perubahan</string>
+    
+    <!-- Profile Screen -->
+    <string name="title_profile">Profil Pengguna</string>
+    <string name="label_full_name">NAMA LENGKAP</string>
+    <string name="placeholder_user_bengkel">User Bengkel</string>
+    <string name="label_email_upper">EMAIL</string>
+    <string name="placeholder_user_email">user@bengkel.com</string>
+    <string name="btn_logout">Logout</string>
+    
+    <!-- Google Sign-In -->
+    <string name="btn_google_sign_in">Masuk dengan Google</string>
+    <string name="msg_google_sign_in_error">Gagal masuk dengan Google: %s</string>
 </resources>
