@@ -22,6 +22,9 @@ class HomeViewModel @JvmOverloads constructor(
     private val _uiState = MutableStateFlow<UiState<List<Booking>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<Booking>>> = _uiState
 
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> = _isRefreshing
+
     init {
         observeUserEmail()
     }
@@ -69,6 +72,25 @@ class HomeViewModel @JvmOverloads constructor(
             } catch (e: Exception) {
                 _uiState.value = UiState.Error(e.message ?: "Gagal menghapus booking")
             }
+        }
+    }
+
+    fun refreshBookings() {
+        viewModelScope.launch {
+            _isRefreshing.value = true
+            val email = authPreferences.emailFlow.first()
+            if (email.isNotEmpty()) {
+                try {
+                    val bookings = repository.getBookings()
+                    val filteredBookings = bookings.filter { it.userId == email || it.userId == "123" }
+                    _uiState.value = UiState.Success(filteredBookings)
+                } catch (e: Exception) {
+                    _uiState.value = UiState.Error(e.message ?: "Terjadi kesalahan")
+                }
+            } else {
+                _uiState.value = UiState.Success(emptyList())
+            }
+            _isRefreshing.value = false
         }
     }
 }

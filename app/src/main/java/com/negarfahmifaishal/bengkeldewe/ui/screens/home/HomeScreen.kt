@@ -13,6 +13,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import com.negarfahmifaishal.bengkeldewe.R
 import com.negarfahmifaishal.bengkeldewe.ui.components.BookingItem
 import com.negarfahmifaishal.bengkeldewe.utils.UiState
@@ -28,6 +31,7 @@ fun HomeScreen(
     onProfileClick: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
     var bookingIdToDelete by remember { mutableStateOf<String?>(null) }
     var showDeleteDialog by remember { mutableStateOf(false) }
 
@@ -51,7 +55,9 @@ fun HomeScreen(
             }
         }
     ) { paddingValues ->
-        Box(
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = { viewModel.refreshBookings() },
             modifier = modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -62,10 +68,16 @@ fun HomeScreen(
                 }
                 is UiState.Success -> {
                     if (state.data.isEmpty()) {
-                        Text(
-                            text = stringResource(id = R.string.msg_no_bookings),
-                            modifier = Modifier.align(Alignment.Center)
-                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .verticalScroll(rememberScrollState()),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.msg_no_bookings)
+                            )
+                        }
                     } else {
                         LazyColumn(
                             contentPadding = PaddingValues(
@@ -91,13 +103,16 @@ fun HomeScreen(
                 }
                 is UiState.Error -> {
                     Column(
-                        modifier = Modifier.align(Alignment.Center),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
                             text = stringResource(id = R.string.msg_error_prefix) + state.message,
                             color = MaterialTheme.colorScheme.error
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
                         Button(onClick = { viewModel.getBookings() }) {
                             Text(stringResource(id = R.string.btn_retry))
                         }
